@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ordem-secreta
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_MODE
+        value: public
+      - key: HOST_CODE
+        sync: false
